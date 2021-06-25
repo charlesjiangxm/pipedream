@@ -1,0 +1,371 @@
+graph(%self.1 : __torch__.torchvision.models.resnet.___torch_mangle_126.ResNet,
+      %x.1 : Tensor):
+  %2 : int[] = prim::Constant[value=[0, 0]]()
+  %3 : int[] = prim::Constant[value=[1, 1]]()
+  %4 : int[] = prim::Constant[value=[3, 3]]()
+  %5 : int[] = prim::Constant[value=[2, 2]]()
+  %6 : bool = prim::Constant[value=1](), scope: __module.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %7 : bool = prim::Constant[value=0](), scope: __module.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %8 : int = prim::Constant[value=1](), scope: __module.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %9 : NoneType = prim::Constant(), scope: __module.conv1
+  %10 : float = prim::Constant[value=1.0000000000000001e-05](), scope: __module.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %11 : float = prim::Constant[value=0.10000000000000001](), scope: __module.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %12 : int = prim::Constant[value=-1]() # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:243:0
+  %fc : __torch__.torch.nn.modules.linear.___torch_mangle_125.Linear = prim::GetAttr[name="fc"](%self.1)
+  %layer4 : __torch__.torch.nn.modules.container.___torch_mangle_123.Sequential = prim::GetAttr[name="layer4"](%self.1)
+  %layer3 : __torch__.torch.nn.modules.container.___torch_mangle_107.Sequential = prim::GetAttr[name="layer3"](%self.1)
+  %layer2 : __torch__.torch.nn.modules.container.___torch_mangle_91.Sequential = prim::GetAttr[name="layer2"](%self.1)
+  %layer1 : __torch__.torch.nn.modules.container.___torch_mangle_75.Sequential = prim::GetAttr[name="layer1"](%self.1)
+  %bn1.1 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_60.BatchNorm2d = prim::GetAttr[name="bn1"](%self.1)
+  %conv1.1 : __torch__.torch.nn.modules.conv.___torch_mangle_59.Conv2d = prim::GetAttr[name="conv1"](%self.1)
+  %weight.83 : Tensor = prim::GetAttr[name="weight"](%conv1.1)
+  %input.1 : Tensor = aten::_convolution(%x.1, %weight.83, %9, %5, %4, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.41 : Tensor = prim::GetAttr[name="running_var"](%bn1.1)
+  %running_mean.41 : Tensor = prim::GetAttr[name="running_mean"](%bn1.1)
+  %bias.43 : Tensor = prim::GetAttr[name="bias"](%bn1.1)
+  %weight.85 : Tensor = prim::GetAttr[name="weight"](%bn1.1)
+  %240 : Tensor = prim::profile[profiled_type=Float(1, 64, 112, 112, strides=[802816, 12544, 112, 1], requires_grad=0, device=cuda:0)](%input.1)
+  %241 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%weight.85)
+  %242 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%bias.43)
+  %243 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.41)
+  %244 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_var.41)
+  %input.3 : Tensor = aten::batch_norm(%240, %241, %242, %243, %244, %6, %11, %10, %6), scope: __module.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %245 : Tensor = prim::profile[profiled_type=Float(1, 64, 112, 112, strides=[802816, 12544, 112, 1], requires_grad=0, device=cuda:0)](%input.3)
+  %input.5 : Tensor = aten::relu_(%245), scope: __module.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %246 : Tensor = prim::profile[profiled_type=Float(1, 64, 112, 112, strides=[802816, 12544, 112, 1], requires_grad=0, device=cuda:0)](%input.5)
+  %input.7 : Tensor = aten::max_pool2d(%246, %4, %5, %3, %3, %7), scope: __module.maxpool # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:718:0
+  %_1.1 : __torch__.torchvision.models.resnet.___torch_mangle_74.BasicBlock = prim::GetAttr[name="1"](%layer1)
+  %_0.1 : __torch__.torchvision.models.resnet.___torch_mangle_68.BasicBlock = prim::GetAttr[name="0"](%layer1)
+  %bn2.1 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_67.BatchNorm2d = prim::GetAttr[name="bn2"](%_0.1)
+  %conv2.1 : __torch__.torch.nn.modules.conv.___torch_mangle_66.Conv2d = prim::GetAttr[name="conv2"](%_0.1)
+  %bn1.3 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_64.BatchNorm2d = prim::GetAttr[name="bn1"](%_0.1)
+  %conv1.3 : __torch__.torch.nn.modules.conv.___torch_mangle_63.Conv2d = prim::GetAttr[name="conv1"](%_0.1)
+  %weight.87 : Tensor = prim::GetAttr[name="weight"](%conv1.3)
+  %247 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%input.7)
+  %input.9 : Tensor = aten::_convolution(%247, %weight.87, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer1/__module.layer1.0/__module.layer1.0.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.43 : Tensor = prim::GetAttr[name="running_var"](%bn1.3)
+  %running_mean.43 : Tensor = prim::GetAttr[name="running_mean"](%bn1.3)
+  %bias.45 : Tensor = prim::GetAttr[name="bias"](%bn1.3)
+  %weight.89 : Tensor = prim::GetAttr[name="weight"](%bn1.3)
+  %248 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%input.9)
+  %249 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%weight.89)
+  %250 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%bias.45)
+  %251 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.43)
+  %252 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_var.43)
+  %input.11 : Tensor = aten::batch_norm(%248, %249, %250, %251, %252, %6, %11, %10, %6), scope: __module.layer1/__module.layer1.0/__module.layer1.0.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %253 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%input.11)
+  %input.13 : Tensor = aten::relu_(%253), scope: __module.layer1/__module.layer1.0/__module.layer1.0.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %weight.91 : Tensor = prim::GetAttr[name="weight"](%conv2.1)
+  %input.15 : Tensor = aten::_convolution(%input.13, %weight.91, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer1/__module.layer1.0/__module.layer1.0.conv2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.45 : Tensor = prim::GetAttr[name="running_var"](%bn2.1)
+  %running_mean.45 : Tensor = prim::GetAttr[name="running_mean"](%bn2.1)
+  %bias.47 : Tensor = prim::GetAttr[name="bias"](%bn2.1)
+  %weight.93 : Tensor = prim::GetAttr[name="weight"](%bn2.1)
+  %254 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%input.15)
+  %255 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%weight.93)
+  %256 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%bias.47)
+  %257 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.45)
+  %258 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_var.45)
+  %out.1 : Tensor = aten::batch_norm(%254, %255, %256, %257, %258, %6, %11, %10, %6), scope: __module.layer1/__module.layer1.0/__module.layer1.0.bn2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %259 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%out.1)
+  %260 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%input.7)
+  %input.17 : Tensor = aten::add_(%259, %260, %8), scope: __module.layer1/__module.layer1.0 # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:80:0
+  %input.19 : Tensor = aten::relu_(%input.17), scope: __module.layer1/__module.layer1.0/__module.layer1.0.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %bn2.3 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_73.BatchNorm2d = prim::GetAttr[name="bn2"](%_1.1)
+  %conv2.3 : __torch__.torch.nn.modules.conv.___torch_mangle_72.Conv2d = prim::GetAttr[name="conv2"](%_1.1)
+  %bn1.5 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_70.BatchNorm2d = prim::GetAttr[name="bn1"](%_1.1)
+  %conv1.5 : __torch__.torch.nn.modules.conv.___torch_mangle_69.Conv2d = prim::GetAttr[name="conv1"](%_1.1)
+  %weight.95 : Tensor = prim::GetAttr[name="weight"](%conv1.5)
+  %input.21 : Tensor = aten::_convolution(%input.19, %weight.95, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer1/__module.layer1.1/__module.layer1.1.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.47 : Tensor = prim::GetAttr[name="running_var"](%bn1.5)
+  %running_mean.47 : Tensor = prim::GetAttr[name="running_mean"](%bn1.5)
+  %bias.49 : Tensor = prim::GetAttr[name="bias"](%bn1.5)
+  %weight.97 : Tensor = prim::GetAttr[name="weight"](%bn1.5)
+  %261 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%input.21)
+  %262 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%weight.97)
+  %263 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%bias.49)
+  %264 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.47)
+  %265 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_var.47)
+  %input.23 : Tensor = aten::batch_norm(%261, %262, %263, %264, %265, %6, %11, %10, %6), scope: __module.layer1/__module.layer1.1/__module.layer1.1.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %266 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%input.23)
+  %input.25 : Tensor = aten::relu_(%266), scope: __module.layer1/__module.layer1.1/__module.layer1.1.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %weight.99 : Tensor = prim::GetAttr[name="weight"](%conv2.3)
+  %input.27 : Tensor = aten::_convolution(%input.25, %weight.99, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer1/__module.layer1.1/__module.layer1.1.conv2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.49 : Tensor = prim::GetAttr[name="running_var"](%bn2.3)
+  %running_mean.49 : Tensor = prim::GetAttr[name="running_mean"](%bn2.3)
+  %bias.51 : Tensor = prim::GetAttr[name="bias"](%bn2.3)
+  %weight.101 : Tensor = prim::GetAttr[name="weight"](%bn2.3)
+  %267 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%input.27)
+  %268 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%weight.101)
+  %269 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%bias.51)
+  %270 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.49)
+  %271 : Tensor = prim::profile[profiled_type=Float(64, strides=[1], requires_grad=0, device=cuda:0)](%running_var.49)
+  %out.3 : Tensor = aten::batch_norm(%267, %268, %269, %270, %271, %6, %11, %10, %6), scope: __module.layer1/__module.layer1.1/__module.layer1.1.bn2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %272 : Tensor = prim::profile[profiled_type=Float(1, 64, 56, 56, strides=[200704, 3136, 56, 1], requires_grad=0, device=cuda:0)](%out.3)
+  %input.29 : Tensor = aten::add_(%272, %input.19, %8), scope: __module.layer1/__module.layer1.1 # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:80:0
+  %input.31 : Tensor = aten::relu_(%input.29), scope: __module.layer1/__module.layer1.1/__module.layer1.1.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %_1.5 : __torch__.torchvision.models.resnet.___torch_mangle_90.BasicBlock = prim::GetAttr[name="1"](%layer2)
+  %_0.5 : __torch__.torchvision.models.resnet.___torch_mangle_84.BasicBlock = prim::GetAttr[name="0"](%layer2)
+  %downsample.1 : __torch__.torch.nn.modules.container.___torch_mangle_83.Sequential = prim::GetAttr[name="downsample"](%_0.5)
+  %bn2.5 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_80.BatchNorm2d = prim::GetAttr[name="bn2"](%_0.5)
+  %conv2.5 : __torch__.torch.nn.modules.conv.___torch_mangle_79.Conv2d = prim::GetAttr[name="conv2"](%_0.5)
+  %bn1.7 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_77.BatchNorm2d = prim::GetAttr[name="bn1"](%_0.5)
+  %conv1.7 : __torch__.torch.nn.modules.conv.___torch_mangle_76.Conv2d = prim::GetAttr[name="conv1"](%_0.5)
+  %weight.103 : Tensor = prim::GetAttr[name="weight"](%conv1.7)
+  %input.33 : Tensor = aten::_convolution(%input.31, %weight.103, %9, %5, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer2/__module.layer2.0/__module.layer2.0.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.51 : Tensor = prim::GetAttr[name="running_var"](%bn1.7)
+  %running_mean.51 : Tensor = prim::GetAttr[name="running_mean"](%bn1.7)
+  %bias.53 : Tensor = prim::GetAttr[name="bias"](%bn1.7)
+  %weight.105 : Tensor = prim::GetAttr[name="weight"](%bn1.7)
+  %273 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%input.33)
+  %274 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%weight.105)
+  %275 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%bias.53)
+  %276 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.51)
+  %277 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_var.51)
+  %input.35 : Tensor = aten::batch_norm(%273, %274, %275, %276, %277, %6, %11, %10, %6), scope: __module.layer2/__module.layer2.0/__module.layer2.0.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %278 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%input.35)
+  %input.37 : Tensor = aten::relu_(%278), scope: __module.layer2/__module.layer2.0/__module.layer2.0.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %weight.107 : Tensor = prim::GetAttr[name="weight"](%conv2.5)
+  %input.39 : Tensor = aten::_convolution(%input.37, %weight.107, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer2/__module.layer2.0/__module.layer2.0.conv2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.53 : Tensor = prim::GetAttr[name="running_var"](%bn2.5)
+  %running_mean.53 : Tensor = prim::GetAttr[name="running_mean"](%bn2.5)
+  %bias.55 : Tensor = prim::GetAttr[name="bias"](%bn2.5)
+  %weight.109 : Tensor = prim::GetAttr[name="weight"](%bn2.5)
+  %279 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%input.39)
+  %280 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%weight.109)
+  %281 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%bias.55)
+  %282 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.53)
+  %283 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_var.53)
+  %out.5 : Tensor = aten::batch_norm(%279, %280, %281, %282, %283, %6, %11, %10, %6), scope: __module.layer2/__module.layer2.0/__module.layer2.0.bn2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %_1.3 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_82.BatchNorm2d = prim::GetAttr[name="1"](%downsample.1)
+  %_0.3 : __torch__.torch.nn.modules.conv.___torch_mangle_81.Conv2d = prim::GetAttr[name="0"](%downsample.1)
+  %weight.111 : Tensor = prim::GetAttr[name="weight"](%_0.3)
+  %input.41 : Tensor = aten::_convolution(%input.31, %weight.111, %9, %5, %2, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer2/__module.layer2.0/__module.layer2.0.downsample/__module.layer2.0.downsample.0 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.55 : Tensor = prim::GetAttr[name="running_var"](%_1.3)
+  %running_mean.55 : Tensor = prim::GetAttr[name="running_mean"](%_1.3)
+  %bias.57 : Tensor = prim::GetAttr[name="bias"](%_1.3)
+  %weight.113 : Tensor = prim::GetAttr[name="weight"](%_1.3)
+  %284 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%input.41)
+  %285 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%weight.113)
+  %286 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%bias.57)
+  %287 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.55)
+  %288 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_var.55)
+  %identity.1 : Tensor = aten::batch_norm(%284, %285, %286, %287, %288, %6, %11, %10, %6), scope: __module.layer2/__module.layer2.0/__module.layer2.0.downsample/__module.layer2.0.downsample.1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %289 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%out.5)
+  %290 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%identity.1)
+  %input.43 : Tensor = aten::add_(%289, %290, %8), scope: __module.layer2/__module.layer2.0 # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:80:0
+  %input.45 : Tensor = aten::relu_(%input.43), scope: __module.layer2/__module.layer2.0/__module.layer2.0.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %bn2.7 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_89.BatchNorm2d = prim::GetAttr[name="bn2"](%_1.5)
+  %conv2.7 : __torch__.torch.nn.modules.conv.___torch_mangle_88.Conv2d = prim::GetAttr[name="conv2"](%_1.5)
+  %bn1.9 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_86.BatchNorm2d = prim::GetAttr[name="bn1"](%_1.5)
+  %conv1.9 : __torch__.torch.nn.modules.conv.___torch_mangle_85.Conv2d = prim::GetAttr[name="conv1"](%_1.5)
+  %weight.115 : Tensor = prim::GetAttr[name="weight"](%conv1.9)
+  %input.47 : Tensor = aten::_convolution(%input.45, %weight.115, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer2/__module.layer2.1/__module.layer2.1.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.57 : Tensor = prim::GetAttr[name="running_var"](%bn1.9)
+  %running_mean.57 : Tensor = prim::GetAttr[name="running_mean"](%bn1.9)
+  %bias.59 : Tensor = prim::GetAttr[name="bias"](%bn1.9)
+  %weight.117 : Tensor = prim::GetAttr[name="weight"](%bn1.9)
+  %291 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%input.47)
+  %292 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%weight.117)
+  %293 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%bias.59)
+  %294 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.57)
+  %295 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_var.57)
+  %input.49 : Tensor = aten::batch_norm(%291, %292, %293, %294, %295, %6, %11, %10, %6), scope: __module.layer2/__module.layer2.1/__module.layer2.1.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %296 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%input.49)
+  %input.51 : Tensor = aten::relu_(%296), scope: __module.layer2/__module.layer2.1/__module.layer2.1.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %weight.119 : Tensor = prim::GetAttr[name="weight"](%conv2.7)
+  %input.53 : Tensor = aten::_convolution(%input.51, %weight.119, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer2/__module.layer2.1/__module.layer2.1.conv2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.59 : Tensor = prim::GetAttr[name="running_var"](%bn2.7)
+  %running_mean.59 : Tensor = prim::GetAttr[name="running_mean"](%bn2.7)
+  %bias.61 : Tensor = prim::GetAttr[name="bias"](%bn2.7)
+  %weight.121 : Tensor = prim::GetAttr[name="weight"](%bn2.7)
+  %297 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%input.53)
+  %298 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%weight.121)
+  %299 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%bias.61)
+  %300 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.59)
+  %301 : Tensor = prim::profile[profiled_type=Float(128, strides=[1], requires_grad=0, device=cuda:0)](%running_var.59)
+  %out.7 : Tensor = aten::batch_norm(%297, %298, %299, %300, %301, %6, %11, %10, %6), scope: __module.layer2/__module.layer2.1/__module.layer2.1.bn2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %302 : Tensor = prim::profile[profiled_type=Float(1, 128, 28, 28, strides=[100352, 784, 28, 1], requires_grad=0, device=cuda:0)](%out.7)
+  %input.55 : Tensor = aten::add_(%302, %input.45, %8), scope: __module.layer2/__module.layer2.1 # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:80:0
+  %input.57 : Tensor = aten::relu_(%input.55), scope: __module.layer2/__module.layer2.1/__module.layer2.1.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %_1.9 : __torch__.torchvision.models.resnet.___torch_mangle_106.BasicBlock = prim::GetAttr[name="1"](%layer3)
+  %_0.9 : __torch__.torchvision.models.resnet.___torch_mangle_100.BasicBlock = prim::GetAttr[name="0"](%layer3)
+  %downsample.3 : __torch__.torch.nn.modules.container.___torch_mangle_99.Sequential = prim::GetAttr[name="downsample"](%_0.9)
+  %bn2.9 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_96.BatchNorm2d = prim::GetAttr[name="bn2"](%_0.9)
+  %conv2.9 : __torch__.torch.nn.modules.conv.___torch_mangle_95.Conv2d = prim::GetAttr[name="conv2"](%_0.9)
+  %bn1.11 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_93.BatchNorm2d = prim::GetAttr[name="bn1"](%_0.9)
+  %conv1.11 : __torch__.torch.nn.modules.conv.___torch_mangle_92.Conv2d = prim::GetAttr[name="conv1"](%_0.9)
+  %weight.123 : Tensor = prim::GetAttr[name="weight"](%conv1.11)
+  %input.59 : Tensor = aten::_convolution(%input.57, %weight.123, %9, %5, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer3/__module.layer3.0/__module.layer3.0.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.61 : Tensor = prim::GetAttr[name="running_var"](%bn1.11)
+  %running_mean.61 : Tensor = prim::GetAttr[name="running_mean"](%bn1.11)
+  %bias.63 : Tensor = prim::GetAttr[name="bias"](%bn1.11)
+  %weight.125 : Tensor = prim::GetAttr[name="weight"](%bn1.11)
+  %303 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%input.59)
+  %304 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%weight.125)
+  %305 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%bias.63)
+  %306 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.61)
+  %307 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_var.61)
+  %input.61 : Tensor = aten::batch_norm(%303, %304, %305, %306, %307, %6, %11, %10, %6), scope: __module.layer3/__module.layer3.0/__module.layer3.0.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %308 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%input.61)
+  %input.63 : Tensor = aten::relu_(%308), scope: __module.layer3/__module.layer3.0/__module.layer3.0.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %weight.127 : Tensor = prim::GetAttr[name="weight"](%conv2.9)
+  %input.65 : Tensor = aten::_convolution(%input.63, %weight.127, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer3/__module.layer3.0/__module.layer3.0.conv2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.63 : Tensor = prim::GetAttr[name="running_var"](%bn2.9)
+  %running_mean.63 : Tensor = prim::GetAttr[name="running_mean"](%bn2.9)
+  %bias.65 : Tensor = prim::GetAttr[name="bias"](%bn2.9)
+  %weight.129 : Tensor = prim::GetAttr[name="weight"](%bn2.9)
+  %309 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%input.65)
+  %310 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%weight.129)
+  %311 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%bias.65)
+  %312 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.63)
+  %313 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_var.63)
+  %out.9 : Tensor = aten::batch_norm(%309, %310, %311, %312, %313, %6, %11, %10, %6), scope: __module.layer3/__module.layer3.0/__module.layer3.0.bn2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %_1.7 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_98.BatchNorm2d = prim::GetAttr[name="1"](%downsample.3)
+  %_0.7 : __torch__.torch.nn.modules.conv.___torch_mangle_97.Conv2d = prim::GetAttr[name="0"](%downsample.3)
+  %weight.131 : Tensor = prim::GetAttr[name="weight"](%_0.7)
+  %input.67 : Tensor = aten::_convolution(%input.57, %weight.131, %9, %5, %2, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer3/__module.layer3.0/__module.layer3.0.downsample/__module.layer3.0.downsample.0 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.65 : Tensor = prim::GetAttr[name="running_var"](%_1.7)
+  %running_mean.65 : Tensor = prim::GetAttr[name="running_mean"](%_1.7)
+  %bias.67 : Tensor = prim::GetAttr[name="bias"](%_1.7)
+  %weight.133 : Tensor = prim::GetAttr[name="weight"](%_1.7)
+  %314 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%input.67)
+  %315 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%weight.133)
+  %316 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%bias.67)
+  %317 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.65)
+  %318 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_var.65)
+  %identity.3 : Tensor = aten::batch_norm(%314, %315, %316, %317, %318, %6, %11, %10, %6), scope: __module.layer3/__module.layer3.0/__module.layer3.0.downsample/__module.layer3.0.downsample.1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %319 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%out.9)
+  %320 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%identity.3)
+  %input.69 : Tensor = aten::add_(%319, %320, %8), scope: __module.layer3/__module.layer3.0 # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:80:0
+  %input.71 : Tensor = aten::relu_(%input.69), scope: __module.layer3/__module.layer3.0/__module.layer3.0.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %bn2.11 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_105.BatchNorm2d = prim::GetAttr[name="bn2"](%_1.9)
+  %conv2.11 : __torch__.torch.nn.modules.conv.___torch_mangle_104.Conv2d = prim::GetAttr[name="conv2"](%_1.9)
+  %bn1.13 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_102.BatchNorm2d = prim::GetAttr[name="bn1"](%_1.9)
+  %conv1.13 : __torch__.torch.nn.modules.conv.___torch_mangle_101.Conv2d = prim::GetAttr[name="conv1"](%_1.9)
+  %weight.135 : Tensor = prim::GetAttr[name="weight"](%conv1.13)
+  %input.73 : Tensor = aten::_convolution(%input.71, %weight.135, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer3/__module.layer3.1/__module.layer3.1.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.67 : Tensor = prim::GetAttr[name="running_var"](%bn1.13)
+  %running_mean.67 : Tensor = prim::GetAttr[name="running_mean"](%bn1.13)
+  %bias.69 : Tensor = prim::GetAttr[name="bias"](%bn1.13)
+  %weight.137 : Tensor = prim::GetAttr[name="weight"](%bn1.13)
+  %321 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%input.73)
+  %322 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%weight.137)
+  %323 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%bias.69)
+  %324 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.67)
+  %325 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_var.67)
+  %input.75 : Tensor = aten::batch_norm(%321, %322, %323, %324, %325, %6, %11, %10, %6), scope: __module.layer3/__module.layer3.1/__module.layer3.1.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %326 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%input.75)
+  %input.77 : Tensor = aten::relu_(%326), scope: __module.layer3/__module.layer3.1/__module.layer3.1.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %weight.139 : Tensor = prim::GetAttr[name="weight"](%conv2.11)
+  %input.79 : Tensor = aten::_convolution(%input.77, %weight.139, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer3/__module.layer3.1/__module.layer3.1.conv2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.69 : Tensor = prim::GetAttr[name="running_var"](%bn2.11)
+  %running_mean.69 : Tensor = prim::GetAttr[name="running_mean"](%bn2.11)
+  %bias.71 : Tensor = prim::GetAttr[name="bias"](%bn2.11)
+  %weight.141 : Tensor = prim::GetAttr[name="weight"](%bn2.11)
+  %327 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%input.79)
+  %328 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%weight.141)
+  %329 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%bias.71)
+  %330 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.69)
+  %331 : Tensor = prim::profile[profiled_type=Float(256, strides=[1], requires_grad=0, device=cuda:0)](%running_var.69)
+  %out.11 : Tensor = aten::batch_norm(%327, %328, %329, %330, %331, %6, %11, %10, %6), scope: __module.layer3/__module.layer3.1/__module.layer3.1.bn2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %332 : Tensor = prim::profile[profiled_type=Float(1, 256, 14, 14, strides=[50176, 196, 14, 1], requires_grad=0, device=cuda:0)](%out.11)
+  %input.81 : Tensor = aten::add_(%332, %input.71, %8), scope: __module.layer3/__module.layer3.1 # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:80:0
+  %input.83 : Tensor = aten::relu_(%input.81), scope: __module.layer3/__module.layer3.1/__module.layer3.1.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %_1 : __torch__.torchvision.models.resnet.___torch_mangle_122.BasicBlock = prim::GetAttr[name="1"](%layer4)
+  %_0 : __torch__.torchvision.models.resnet.___torch_mangle_116.BasicBlock = prim::GetAttr[name="0"](%layer4)
+  %downsample : __torch__.torch.nn.modules.container.___torch_mangle_115.Sequential = prim::GetAttr[name="downsample"](%_0)
+  %bn2.13 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_112.BatchNorm2d = prim::GetAttr[name="bn2"](%_0)
+  %conv2.13 : __torch__.torch.nn.modules.conv.___torch_mangle_111.Conv2d = prim::GetAttr[name="conv2"](%_0)
+  %bn1.15 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_109.BatchNorm2d = prim::GetAttr[name="bn1"](%_0)
+  %conv1.15 : __torch__.torch.nn.modules.conv.___torch_mangle_108.Conv2d = prim::GetAttr[name="conv1"](%_0)
+  %weight.143 : Tensor = prim::GetAttr[name="weight"](%conv1.15)
+  %input.85 : Tensor = aten::_convolution(%input.83, %weight.143, %9, %5, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer4/__module.layer4.0/__module.layer4.0.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.71 : Tensor = prim::GetAttr[name="running_var"](%bn1.15)
+  %running_mean.71 : Tensor = prim::GetAttr[name="running_mean"](%bn1.15)
+  %bias.73 : Tensor = prim::GetAttr[name="bias"](%bn1.15)
+  %weight.145 : Tensor = prim::GetAttr[name="weight"](%bn1.15)
+  %333 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%input.85)
+  %334 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%weight.145)
+  %335 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%bias.73)
+  %336 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.71)
+  %337 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_var.71)
+  %input.87 : Tensor = aten::batch_norm(%333, %334, %335, %336, %337, %6, %11, %10, %6), scope: __module.layer4/__module.layer4.0/__module.layer4.0.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %338 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%input.87)
+  %input.89 : Tensor = aten::relu_(%338), scope: __module.layer4/__module.layer4.0/__module.layer4.0.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %weight.147 : Tensor = prim::GetAttr[name="weight"](%conv2.13)
+  %input.91 : Tensor = aten::_convolution(%input.89, %weight.147, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer4/__module.layer4.0/__module.layer4.0.conv2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.73 : Tensor = prim::GetAttr[name="running_var"](%bn2.13)
+  %running_mean.73 : Tensor = prim::GetAttr[name="running_mean"](%bn2.13)
+  %bias.75 : Tensor = prim::GetAttr[name="bias"](%bn2.13)
+  %weight.149 : Tensor = prim::GetAttr[name="weight"](%bn2.13)
+  %339 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%input.91)
+  %340 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%weight.149)
+  %341 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%bias.75)
+  %342 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.73)
+  %343 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_var.73)
+  %out.13 : Tensor = aten::batch_norm(%339, %340, %341, %342, %343, %6, %11, %10, %6), scope: __module.layer4/__module.layer4.0/__module.layer4.0.bn2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %_1.11 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_114.BatchNorm2d = prim::GetAttr[name="1"](%downsample)
+  %_0.11 : __torch__.torch.nn.modules.conv.___torch_mangle_113.Conv2d = prim::GetAttr[name="0"](%downsample)
+  %weight.151 : Tensor = prim::GetAttr[name="weight"](%_0.11)
+  %input.93 : Tensor = aten::_convolution(%input.83, %weight.151, %9, %5, %2, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer4/__module.layer4.0/__module.layer4.0.downsample/__module.layer4.0.downsample.0 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.75 : Tensor = prim::GetAttr[name="running_var"](%_1.11)
+  %running_mean.75 : Tensor = prim::GetAttr[name="running_mean"](%_1.11)
+  %bias.77 : Tensor = prim::GetAttr[name="bias"](%_1.11)
+  %weight.153 : Tensor = prim::GetAttr[name="weight"](%_1.11)
+  %344 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%input.93)
+  %345 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%weight.153)
+  %346 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%bias.77)
+  %347 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.75)
+  %348 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_var.75)
+  %identity : Tensor = aten::batch_norm(%344, %345, %346, %347, %348, %6, %11, %10, %6), scope: __module.layer4/__module.layer4.0/__module.layer4.0.downsample/__module.layer4.0.downsample.1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %349 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%out.13)
+  %350 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%identity)
+  %input.95 : Tensor = aten::add_(%349, %350, %8), scope: __module.layer4/__module.layer4.0 # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:80:0
+  %input.97 : Tensor = aten::relu_(%input.95), scope: __module.layer4/__module.layer4.0/__module.layer4.0.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %bn2 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_121.BatchNorm2d = prim::GetAttr[name="bn2"](%_1)
+  %conv2 : __torch__.torch.nn.modules.conv.___torch_mangle_120.Conv2d = prim::GetAttr[name="conv2"](%_1)
+  %bn1 : __torch__.torch.nn.modules.batchnorm.___torch_mangle_118.BatchNorm2d = prim::GetAttr[name="bn1"](%_1)
+  %conv1 : __torch__.torch.nn.modules.conv.___torch_mangle_117.Conv2d = prim::GetAttr[name="conv1"](%_1)
+  %weight.155 : Tensor = prim::GetAttr[name="weight"](%conv1)
+  %input.99 : Tensor = aten::_convolution(%input.97, %weight.155, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer4/__module.layer4.1/__module.layer4.1.conv1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var.77 : Tensor = prim::GetAttr[name="running_var"](%bn1)
+  %running_mean.77 : Tensor = prim::GetAttr[name="running_mean"](%bn1)
+  %bias.79 : Tensor = prim::GetAttr[name="bias"](%bn1)
+  %weight.157 : Tensor = prim::GetAttr[name="weight"](%bn1)
+  %351 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%input.99)
+  %352 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%weight.157)
+  %353 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%bias.79)
+  %354 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_mean.77)
+  %355 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_var.77)
+  %input.101 : Tensor = aten::batch_norm(%351, %352, %353, %354, %355, %6, %11, %10, %6), scope: __module.layer4/__module.layer4.1/__module.layer4.1.bn1 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %356 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%input.101)
+  %input.103 : Tensor = aten::relu_(%356), scope: __module.layer4/__module.layer4.1/__module.layer4.1.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %weight.159 : Tensor = prim::GetAttr[name="weight"](%conv2)
+  %input.105 : Tensor = aten::_convolution(%input.103, %weight.159, %9, %3, %3, %3, %7, %2, %8, %7, %7, %6, %6), scope: __module.layer4/__module.layer4.1/__module.layer4.1.conv2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\modules\conv.py:442:0
+  %running_var : Tensor = prim::GetAttr[name="running_var"](%bn2)
+  %running_mean : Tensor = prim::GetAttr[name="running_mean"](%bn2)
+  %bias.81 : Tensor = prim::GetAttr[name="bias"](%bn2)
+  %weight.161 : Tensor = prim::GetAttr[name="weight"](%bn2)
+  %357 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%input.105)
+  %358 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%weight.161)
+  %359 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%bias.81)
+  %360 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_mean)
+  %361 : Tensor = prim::profile[profiled_type=Float(512, strides=[1], requires_grad=0, device=cuda:0)](%running_var)
+  %out : Tensor = aten::batch_norm(%357, %358, %359, %360, %361, %6, %11, %10, %6), scope: __module.layer4/__module.layer4.1/__module.layer4.1.bn2 # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:2281:0
+  %362 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%out)
+  %input.107 : Tensor = aten::add_(%362, %input.97, %8), scope: __module.layer4/__module.layer4.1 # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:80:0
+  %input.109 : Tensor = aten::relu_(%input.107), scope: __module.layer4/__module.layer4.1/__module.layer4.1.relu # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1296:0
+  %363 : Tensor = prim::profile[profiled_type=Float(1, 512, 7, 7, strides=[25088, 49, 7, 1], requires_grad=0, device=cuda:0)](%input.109)
+  %x : Tensor = aten::adaptive_avg_pool2d(%363, %3), scope: __module.avgpool # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1130:0
+  %364 : Tensor = prim::profile[profiled_type=Float(1, 512, 1, 1, strides=[512, 1, 1, 1], requires_grad=0, device=cuda:0)](%x)
+  %input : Tensor = aten::flatten(%364, %8, %12) # C:\Users\charl\anaconda3\lib\site-packages\torchvision\models\resnet.py:243:0
+  %bias : Tensor = prim::GetAttr[name="bias"](%fc)
+  %weight : Tensor = prim::GetAttr[name="weight"](%fc)
+  %365 : Tensor = prim::profile[profiled_type=Float(1, 512, strides=[512, 1], requires_grad=0, device=cuda:0)](%input)
+  %366 : Tensor = prim::profile[profiled_type=Float(1000, 512, strides=[512, 1], requires_grad=0, device=cuda:0)](%weight)
+  %367 : Tensor = prim::profile[profiled_type=Float(1000, strides=[1], requires_grad=0, device=cuda:0)](%bias)
+  %239 : Tensor = aten::linear(%365, %366, %367), scope: __module.fc # C:\Users\charl\anaconda3\lib\site-packages\torch\nn\functional.py:1847:0
+  %368 : Tensor = prim::profile[profiled_type=Float(1, 1000, strides=[1000, 1], requires_grad=0, device=cuda:0)](%239)
+   = prim::profile()
+  return (%368)

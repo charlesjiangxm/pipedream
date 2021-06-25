@@ -1,0 +1,147 @@
+digraph {
+	input1 [label="aten::_convolution([1, 64, 112, 112])"]
+	input3 [label="aten::batch_norm([1, 64, 112, 112])"]
+	input5 [label="aten::relu_([1, 64, 112, 112])"]
+	input7 [label="aten::max_pool2d([1, 64, 56, 56])"]
+	input9 [label="aten::_convolution([1, 64, 56, 56])"]
+	input11 [label="aten::batch_norm([1, 64, 56, 56])"]
+	input13 [label="aten::relu_([1, 64, 56, 56])"]
+	input15 [label="aten::_convolution([1, 64, 56, 56])"]
+	out1 [label="aten::batch_norm([1, 64, 56, 56])"]
+	input17 [label="aten::add_([1, 64, 56, 56])"]
+	input19 [label="aten::relu_([1, 64, 56, 56])"]
+	input21 [label="aten::_convolution([1, 64, 56, 56])"]
+	input23 [label="aten::batch_norm([1, 64, 56, 56])"]
+	input25 [label="aten::relu_([1, 64, 56, 56])"]
+	input27 [label="aten::_convolution([1, 64, 56, 56])"]
+	out3 [label="aten::batch_norm([1, 64, 56, 56])"]
+	input29 [label="aten::add_([1, 64, 56, 56])"]
+	input31 [label="aten::relu_([1, 64, 56, 56])"]
+	input33 [label="aten::_convolution([1, 128, 28, 28])"]
+	input35 [label="aten::batch_norm([1, 128, 28, 28])"]
+	input37 [label="aten::relu_([1, 128, 28, 28])"]
+	input39 [label="aten::_convolution([1, 128, 28, 28])"]
+	out5 [label="aten::batch_norm([1, 128, 28, 28])"]
+	input41 [label="aten::_convolution([1, 128, 28, 28])"]
+	identity1 [label="aten::batch_norm([1, 128, 28, 28])"]
+	input43 [label="aten::add_([1, 128, 28, 28])"]
+	input45 [label="aten::relu_([1, 128, 28, 28])"]
+	input47 [label="aten::_convolution([1, 128, 28, 28])"]
+	input49 [label="aten::batch_norm([1, 128, 28, 28])"]
+	input51 [label="aten::relu_([1, 128, 28, 28])"]
+	input53 [label="aten::_convolution([1, 128, 28, 28])"]
+	out7 [label="aten::batch_norm([1, 128, 28, 28])"]
+	input55 [label="aten::add_([1, 128, 28, 28])"]
+	input57 [label="aten::relu_([1, 128, 28, 28])"]
+	input59 [label="aten::_convolution([1, 256, 14, 14])"]
+	input61 [label="aten::batch_norm([1, 256, 14, 14])"]
+	input63 [label="aten::relu_([1, 256, 14, 14])"]
+	input65 [label="aten::_convolution([1, 256, 14, 14])"]
+	out9 [label="aten::batch_norm([1, 256, 14, 14])"]
+	input67 [label="aten::_convolution([1, 256, 14, 14])"]
+	identity3 [label="aten::batch_norm([1, 256, 14, 14])"]
+	input69 [label="aten::add_([1, 256, 14, 14])"]
+	input71 [label="aten::relu_([1, 256, 14, 14])"]
+	input73 [label="aten::_convolution([1, 256, 14, 14])"]
+	input75 [label="aten::batch_norm([1, 256, 14, 14])"]
+	input77 [label="aten::relu_([1, 256, 14, 14])"]
+	input79 [label="aten::_convolution([1, 256, 14, 14])"]
+	out11 [label="aten::batch_norm([1, 256, 14, 14])"]
+	input81 [label="aten::add_([1, 256, 14, 14])"]
+	input83 [label="aten::relu_([1, 256, 14, 14])"]
+	input85 [label="aten::_convolution([1, 512, 7, 7])"]
+	input87 [label="aten::batch_norm([1, 512, 7, 7])"]
+	input89 [label="aten::relu_([1, 512, 7, 7])"]
+	input91 [label="aten::_convolution([1, 512, 7, 7])"]
+	out13 [label="aten::batch_norm([1, 512, 7, 7])"]
+	input93 [label="aten::_convolution([1, 512, 7, 7])"]
+	identity [label="aten::batch_norm([1, 512, 7, 7])"]
+	input95 [label="aten::add_([1, 512, 7, 7])"]
+	input97 [label="aten::relu_([1, 512, 7, 7])"]
+	input99 [label="aten::_convolution([1, 512, 7, 7])"]
+	input101 [label="aten::batch_norm([1, 512, 7, 7])"]
+	input103 [label="aten::relu_([1, 512, 7, 7])"]
+	input105 [label="aten::_convolution([1, 512, 7, 7])"]
+	out [label="aten::batch_norm([1, 512, 7, 7])"]
+	input107 [label="aten::add_([1, 512, 7, 7])"]
+	input109 [label="aten::relu_([1, 512, 7, 7])"]
+	x [label="aten::adaptive_avg_pool2d([1, 512, 1, 1])"]
+	input [label="aten::flatten([1, 512])"]
+	382 [label="aten::linear([1, 1000])"]
+	input1 -> input3
+	input3 -> input5
+	input5 -> input7
+	input7 -> input9
+	input7 -> input17
+	input9 -> input11
+	input11 -> input13
+	input13 -> input15
+	input15 -> out1
+	out1 -> input17
+	input17 -> input19
+	input19 -> input21
+	input19 -> input29
+	input21 -> input23
+	input23 -> input25
+	input25 -> input27
+	input27 -> out3
+	out3 -> input29
+	input29 -> input31
+	input31 -> input33
+	input31 -> input41
+	input33 -> input35
+	input35 -> input37
+	input37 -> input39
+	input39 -> out5
+	out5 -> input43
+	input41 -> identity1
+	identity1 -> input43
+	input43 -> input45
+	input45 -> input47
+	input45 -> input55
+	input47 -> input49
+	input49 -> input51
+	input51 -> input53
+	input53 -> out7
+	out7 -> input55
+	input55 -> input57
+	input57 -> input59
+	input57 -> input67
+	input59 -> input61
+	input61 -> input63
+	input63 -> input65
+	input65 -> out9
+	out9 -> input69
+	input67 -> identity3
+	identity3 -> input69
+	input69 -> input71
+	input71 -> input73
+	input71 -> input81
+	input73 -> input75
+	input75 -> input77
+	input77 -> input79
+	input79 -> out11
+	out11 -> input81
+	input81 -> input83
+	input83 -> input85
+	input83 -> input93
+	input85 -> input87
+	input87 -> input89
+	input89 -> input91
+	input91 -> out13
+	out13 -> input95
+	input93 -> identity
+	identity -> input95
+	input95 -> input97
+	input97 -> input99
+	input97 -> input107
+	input99 -> input101
+	input101 -> input103
+	input103 -> input105
+	input105 -> out
+	out -> input107
+	input107 -> input109
+	input109 -> x
+	x -> input
+	input -> 382
+}
